@@ -48,6 +48,8 @@ pattern tool *and* a gentle lesson in group theory.
 
 ## Run it
 
+> **Try it live:** <https://joshua12312617.github.io/tessella/>
+
 ```sh
 cd js-tessella
 python -m http.server 8000
