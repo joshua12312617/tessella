@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7f0">
+  <title>Tessella — a seamless pattern studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Tessella home"><span class="brand-mark">◆</span>tessella</a>
+    <div class="topbar-actions">
+      <button class="button subtle" id="presetButton">Presets</button>
+      <button class="button subtle" id="randomize">Randomize</button>
+      <button class="button" id="exportSvg">Export SVG</button>
+      <button class="button" id="exportPng">Export PNG</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="side-panel">
+      <section class="panel">
+        <p class="eyebrow">SYMMETRY GROUP</p>
+        <div class="mode-grid" id="modeGrid" role="radiogroup" aria-label="Symmetry group"></div>
+        <p class="panel-note" id="modeNote">Choose how the motif repeats across the plane.</p>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">MOTIF</p>
+        <div class="motif-grid" id="motifGrid"></div>
+        <button class="button ghost wide" id="drawToggle">✎ Draw your own motif</button>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">COLOR</p>
+        <div class="swatch-row" id="paletteRow"></div>
+        <div class="harmony-row">
+          <input type="range" id="hueSlider" min="0" max="360" value="24" aria-label="Base hue">
+          <select id="schemeSelect" aria-label="Harmony scheme">
+            <option value="analogous">Analogous</option>
+            <option value="complementary">Complementary</option>
+            <option value="triadic">Triadic</option>
+            <option value="split-complementary">Split</option>
+            <option value="monochrome">Mono</option>
+          </select>
+          <button class="button ghost" id="harmonyApply">Apply</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">GEOMETRY</p>
+        <div class="slider-field"><label for="tileSize">Tile size <output id="tileSizeValue"></output></label>
+          <input type="range" id="tileSize" min="60" max="220" step="2" value="120"></div>
+        <div class="slider-field"><label for="strokeWidth">Stroke width <output id="strokeWidthValue"></output></label>
+          <input type="range" id="strokeWidth" min="1" max="10" step="0.5" value="2"></div>
+        <div class="slider-field"><label for="density">Density <output id="densityValue"></output></label>
+          <input type="range" id="density" min="1" max="10" step="1" value="5"></div>
+        <label class="check-field"><input type="checkbox" id="showDomain" checked> Show fundamental domain</label>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">YOUR WORK</p>
+        <div class="work-row">
+          <button class="button ghost" id="saveDesign">Save design</button>
+          <button class="button ghost" id="loadDesign">Load</button>
+          <button class="button ghost" id="clearDesign">Clear</button>
+        </div>
+      </section>
+    </aside>
+
+    <section class="stage" aria-label="Pattern preview">
+      <div class="stage-head">
+        <div>
+          <p class="eyebrow">LIVE PREVIEW</p>
+          <h1 id="patternTitle">Untitled pattern</h1>
+        </div>
+        <span class="stage-meta" id="stageMeta">3 × 3 tiles</span>
+      </div>
+      <div class="canvas-wrap" id="canvasWrap">
+        <canvas id="preview" aria-label="Seamless pattern preview"></canvas>
+        <div class="draw-hint" id="drawHint" hidden>Draw inside one tile — your strokes repeat everywhere. Click ✎ again when done.</div>
+      </div>
+      <p class="stage-note">Every transformation comes from a real crystallographic
+        symmetry group. The shaded region on the preview is the <em>fundamental
+        domain</em> — the smallest piece needed to reconstruct the whole pattern.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Tessella</span>
+    <span>Wallpaper-group symmetry for pattern design · everything runs in your browser</span>
+  </footer>
+
+  <script src="js/theory.js"></script>
+  <script src="js/svg-export.js"></script>
+  <script src="js/tile-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

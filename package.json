@@ -1,0 +1,9 @@
+{
+  "name": "tessella",
+  "version": "1.0.0",
+  "description": "A seamless pattern studio built on wallpaper-group symmetry",
+  "private": true,
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\""
+  }
+}
